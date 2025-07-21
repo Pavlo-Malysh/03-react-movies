@@ -21,6 +21,7 @@ function App() {
     try {
       setLoading(true);
       setIsError(false);
+      setMovies([]);
       const response = await fetchMovies(query.trim());
 
       if (response.results.length === 0) {
@@ -56,7 +57,7 @@ function App() {
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
-      {movies.length === 0 && <Toaster />}
+      <Toaster />
 
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
